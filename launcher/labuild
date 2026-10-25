@@ -9,7 +9,7 @@ LABUILD_SH="${LABUILD_SH:-$root/share/labuild/labuild-sh.sh}"
 ABUILD_SHAREDIR="${ABUILD_SHAREDIR:-$root/../share}"
 APK="${APK:-$root/bin/apk}"
 PATH="$root/src:$root/bin:$PATH"
-REPODEST="$HOME/.config/labuild/$(basename $(dirname "$PWD"))"
+REPODEST="$HOME/.local/share/labuild/$(basename $(dirname "$PWD"))"
 export LABUILD_ROOT LABUILD_EXE LABUILD_CORE LABUILD_SH ABUILD_SHAREDIR APK PATH REPODEST
 
 if [ -n "$LABUILD_LUA" ]; then
