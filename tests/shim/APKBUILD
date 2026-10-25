@@ -1,0 +1,26 @@
+# Maintainer: tuwum <tuwum@wairu.space>
+pkgname="shim"
+pkgver="1.0"
+pkgrel="0"
+pkgdesc="Minimal /bin/sh provider shim for test roots"
+url="https://example.org"
+arch="all"
+license="MIT"
+provides="/bin/sh"
+source="sh.c"
+
+build() {
+	gcc -O2 -static "$srcdir/sh.c" -o "$srcdir/sh" 2>/dev/null || gcc -O2 "$srcdir/sh.c" -o "$srcdir/sh"
+}
+
+check() {
+	"$srcdir/sh" -c "exit 0"
+}
+
+package() {
+	install -Dm755 "$srcdir/sh" "$pkgdir/bin/sh"
+}
+
+sha512sums="
+37ce03f38c7d265ff35b9264d97a955a9cbfaf9c6d5b9cfc471445264ed4af2a1304dab73432707e44685f8afd3a3e376da9015c4e54810aea34f1b48e532977  sh.c
+"

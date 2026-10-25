@@ -1,0 +1,29 @@
+# Maintainer: tuwum <tuwum@wairu.space>
+pkgname="hello"
+pkgver="1.0"
+pkgrel="0"
+pkgdesc="Smoke test package for labuild"
+url="https://example.org"
+arch="all"
+license="MIT"
+depends="/bin/sh"
+subpackages="$pkgname-doc"
+source="hello.c hello.1"
+
+build() {
+	gcc -O2 -static "$srcdir/hello.c" -o "$srcdir/hello" 2>/dev/null || gcc -O2 "$srcdir/hello.c" -o "$srcdir/hello"
+}
+
+check() {
+	"$srcdir/hello" | grep -q "Hello from labuild"
+}
+
+package() {
+	install -Dm755 "$srcdir/hello" "$pkgdir/usr/bin/hello"
+	install -Dm644 "$srcdir/hello.1" "$pkgdir/usr/share/man/man1/hello.1"
+}
+
+sha512sums="
+e51b437f40ddc9be3600c01e1e046995a968e3969e5cccacc09ad7737f05facdecb0dd8b2834790d42fa3fb02f22b97c7fc78a6fbf031be21784d8384e173aa5  hello.c
+026aed5aa5ca490263d55f9e1316a430b11ed551fec0f97babe622a0ccac405e9b00b937f65b0751a70c73e26309062132ba60ba7b3e71f3ab48f5ec93b16c68  hello.1
+"

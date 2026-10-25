@@ -1,0 +1,15 @@
+name: labuild-core
+version: 0.1.0
+
+description: Native helpers (ELF tracing, checksums, doc compression) for the hybrid Lua/Crystal abuild rewrite
+
+authors:
+  - tuwum
+
+targets:
+  labuild-core:
+    main: src/labuild_core.cr
+
+crystal: ">= 1.0.0"
+
+license: GPL-2.0-only

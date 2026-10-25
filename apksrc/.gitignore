@@ -1,0 +1,13 @@
+src/apk
+src/apk.static
+src/help.h
+libfetch/*err.h
+*.a
+*.o
+*.d
+*.cmd
+*.so*
+*.5
+*.8
+*.pc
+config.mk
